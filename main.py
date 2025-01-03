@@ -1,5 +1,5 @@
 def main():
-    import from core
+    from core import
     pass
 
 main()
