@@ -104,9 +104,14 @@ def view_list_books(file):
     catalog = []
     file = open(file, "r")
     catalog = file.readlines()
-    for line in catalog:
-        print(line)
+    for i, line in enumerate(catalog, start = 1):
+        print(f"{i}.{line}")
         print()
+
+# Вывод сообщения при выборе  книги для удаления
+def message_search_books():
+    search_word = input(f"Введите букву либо часть слова названия книги или ее автора, которую Вы хотите найти:     ")
+    return search_word
 
 # Вывод сообщения при выборе поиска книги
 def message_search_books():
