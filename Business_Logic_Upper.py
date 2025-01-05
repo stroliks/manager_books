@@ -19,7 +19,13 @@ def work_with_catalog(file):
                 from GraficUserInterface import view_list_books
                 print(f"В текущем каталоге находятся следующие книги:  ")
                 view_list_books(file)
-            #elif action_in_catalog == "П":
+            elif action_in_catalog == "П":
+                from GraficUserInterface import message_search_books
+                searсh_word = message_search_books()
+                catalog = search_book(file, searсh_word)
+                for line in catalog:
+                    print(line)
+                    print()
             #elif action_in_catalog == "С":
             #elif action_in_catalog == "Э":
 
@@ -110,10 +116,17 @@ def delete_book(file, number_book):
         book += 1
     file.close()
 
-
-
 # функция поиска книги в каталоге
+def search_book(file, searсh_word):
+    list_searh_book = []
+    file = open(file, "r")
+    catalog = file.readlines()
+    for book in catalog:
+        if searсh_word in book:
+            list_searh_book.append(book)
+    file.close()
+    return list_searh_book
 
-# функция сортировки книги в каталоге
+# функция сортировки книг в каталоге
 
 # функция экспорта каталога
