@@ -9,9 +9,12 @@ def work_with_catalog(file):
             if action_in_catalog == "Д":
                 name_book, author_book, year_book, genre_book = message_add_book()
                 add_book(file, name_book, author_book, year_book, genre_book)
-pass
-            #elif action_in_catalog == "У":
-            #elif action_in_catalog == "О":
+            elif action_in_catalog == "У":
+                
+            elif action_in_catalog == "О":
+                from GraficUserInterface import view_list_books
+                print(f"В текущем каталоге находятся следующие книги:  ")
+                view_list_books(file)
             #elif action_in_catalog == "П":
             #elif action_in_catalog == "С":
             #elif action_in_catalog == "Э":
@@ -91,15 +94,6 @@ def add_book(file, name_book, author_book, year_book, genre_book):
 
 # функция удаления книги из каталога
 
-
-# функция для отображения списка книг (каталога)
-def view_catalog(file):
-    catalog = []
-    file = open(file, "r")
-    catalog = file.readlines()
-    for line in catalog:
-        print(line)
-        print()
 
 # функция поиска книги в каталоге
 
