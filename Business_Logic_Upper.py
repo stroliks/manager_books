@@ -6,9 +6,11 @@ def work_with_catalog(file):
         from GraficUserInterface import msg_select_act_in_catalog, message_add_book
         action_in_catalog = msg_select_act_in_catalog()
         while action_in_catalog != "Н":
+            
             if action_in_catalog == "Д":
                 name_book, author_book, year_book, genre_book = message_add_book()
                 add_book(file, name_book, author_book, year_book, genre_book)
+
             elif action_in_catalog == "У":
                 from GraficUserInterface import message_delete_book, view_list_books
                 view_list_books(file)
@@ -19,13 +21,13 @@ def work_with_catalog(file):
                 from GraficUserInterface import view_list_books
                 print(f"В текущем каталоге находятся следующие книги:  ")
                 view_list_books(file)
+
             elif action_in_catalog == "П":
-                from GraficUserInterface import message_search_books
+                from GraficUserInterface import message_search_books, print_list
                 searсh_word = message_search_books()
                 catalog = search_book(file, searсh_word)
-                for line in catalog:
-                    print(line)
-                    print()
+                print_list(catalog)
+
             #elif action_in_catalog == "С":
             #elif action_in_catalog == "Э":
 
