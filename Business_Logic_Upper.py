@@ -68,3 +68,26 @@ def delete_catalog():
 
 # ФУНКЦИИ ПРИ РАБОТЕ В КАТАЛОГЕ
 #___________________________________________________________________________________________________________________
+
+# функция добавления книги в каталог
+def add_book(file, name_book, author_book, year_book, genre_book):
+    file = open(file, "a")
+    file.write(name_book + author_book + year_book + genre_book)
+    file.close()
+
+# функция удаления книги из каталога
+
+
+# функция для отображения списка книг (каталога)
+def view_catalog(file):
+    catalog = []
+    file = open(file, "r")
+    catalog = file.readlines()
+    for line in catalog:
+        print(line)
+
+# функция поиска книги в каталоге
+
+# функция сортировки книги в каталоге
+
+# функция экспорта каталога
