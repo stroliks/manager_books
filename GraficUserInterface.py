@@ -12,7 +12,8 @@ def message_first_select():
           "С - Создать каталог\n"
           "У - Удалить каталог\n"
           "П - Просмотр истории каталогов \n"
-          "Р - Работа с каталогом (добавление/удаление книг, просмотр информации о книгах, экспорт каталога) \n")
+          "Р - Работа с каталогом (добавление/удаление книг, просмотр информации о книгах, экспорт каталога) \n"
+          "В - Выход из приложения")
     first_select_action = input("Введите первую букву желаемого действия:     ")
     return first_select_action
 
@@ -25,7 +26,7 @@ def message_create_catalog():
 
 # Вывод сообщения при уже существующем каталоге либо при успешном создании:
 def message_result_create_catalog(value, name_catalog):
-    if value == False:
+    if value == True:
         print ("Создание нового каталога невозможно! Каталог уже существует!!!")
     else:
         print(f"Каталог под названием <<{name_catalog}>> успешно создан!")
@@ -40,7 +41,7 @@ def message_confirm_delete_catalog():
     return confirm_delete_catalog
 
 # Вывод сообщения результатов удалении каталога
-def message_result_delete_catalog(result_delete:bool):
+def message_result_delete_catalog(result_delete):
     if result_delete == True:
         print("Каталог успешно удален!!!")
     else:
@@ -51,7 +52,7 @@ def message_result_delete_catalog(result_delete:bool):
 # ФУНКЦИИ ВЫВОДА СООБЩЕНИЙ при просмотре истории каталогов
 #_____________________________________________________________________________________________________________________
 # Вывод сообщения при просмотре истории каталогов
-def message_catalogs_history(list_catalog:lst):
+def message_catalogs_history(list_catalog):
     print(f"За время функционирования программы было создано {len(list_catalog)}  каталогов (включая текущий):  ")
     for i in range(list_catalog):
         print(f"{i+1}. Каталог с именем {list_catalog[i]}, на момент удаления содержал {} книг")
@@ -66,7 +67,8 @@ def msg_select_act_in_catalog():
           "О - Отобразить все книги каталога \n"
           "П - Поиск книги в каталоге \n"
           "С - Сортировка книг в каталоге \n"
-          "Э - Экспорт списка книг из каталога \n")
+          "Э - Экспорт списка книг из каталога \n"
+          "Н - Назад в главное меню")
     select_act_in_catalog = input("Введите первую букву желаемого действия:     ")
     return select_act_in_catalog
 
