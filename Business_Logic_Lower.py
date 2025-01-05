@@ -14,3 +14,4 @@ def exist_catalog():
 list_catalog = []
 def reestr_catalog(name_catalog):
     list_catalog.append(name_catalog)
+
