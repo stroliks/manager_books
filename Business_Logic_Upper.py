@@ -98,7 +98,19 @@ def add_book(file, name_book, author_book, year_book, genre_book):
 
 # функция удаления книги из каталога
 def delete_book(file, number_book):
-    file = open(file, "a")
+    catalog = []
+    file = open(file, "r")
+    catalog = file.readlines()
+    book = 1
+    file.close()
+    file = open(file, "w")
+    for book in catalog:
+        if book != number_book:
+            file.write(book)
+        book += 1
+    file.close()
+
+
 
 # функция поиска книги в каталоге
 
