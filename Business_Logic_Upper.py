@@ -1,5 +1,5 @@
 from Business_Logic_Lower import *
-
+import pandas
 
 
 def work_with_catalog(file):
@@ -34,7 +34,13 @@ def work_with_catalog(file):
                 sort_books = sort_catalog(file, sort_atribute)
                 print_list(sort_books)
 
-            #elif action_in_catalog == "Э":
+            elif action_in_catalog == "Э":
+                from GraficUserInterface import message_export_catalog
+                format = message_export_catalog()
+                if format == "C":
+                    export_catalog(file, name_catalog)
+                    return True
+                return False
 
 
 # ФУНКЦИЯ НЕПОСРЕДСТВЕННОГО ФУНКЦИОНИРОВАНИЯ ПРОГРАММЫ ПРИ ВЫБОРЕ ПОЛЬЗОВАТЕЛЯ
@@ -77,8 +83,6 @@ def global_function(action):
             work_with_catalog(work_file)
         else:
             print("КАталог книг отсутствует. Для начала создайте каталог!")
-
-
 
 
 
@@ -159,6 +163,12 @@ def sort_catalog(file, sort_atribute):
     return sort_catalog
 
 
-
-
 # функция экспорта каталога
+def export_catalog(file, name_catalog):
+    catalog = []
+    file = open(file, "r")
+    catalog = file.readlines()
+    df = pandas.DataFrame(catalog, columns=["Название книги","Автор книги", "Год издания", "Жанр"] )
+    df.to_csv(f"{name_catalog}.csv", index=False)
+
+
