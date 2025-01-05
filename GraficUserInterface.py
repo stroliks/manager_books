@@ -93,12 +93,6 @@ def message_add_book():
        return name_book, author_book, year_book, genre_book
 
 
-# Вывод сообщения при удалении книги (подтверждение удаления)
-def message_delete_book():
-    confirm_delete_book = input("Вы точно хотите удалить  книгу?? (Да или Нет) :    ")
-    return confirm_delete_book
-
-
 # Вывод сообщения при отображении книг в каталоге
 def view_list_books(file):
     catalog = []
@@ -109,9 +103,10 @@ def view_list_books(file):
         print()
 
 # Вывод сообщения при выборе  книги для удаления
-def message_search_books():
-    search_word = input(f"Введите букву либо часть слова названия книги или ее автора, которую Вы хотите найти:     ")
-    return search_word
+def message_delete_book():
+    number_delete_book = input(f"Введите порядковый номер книги, которую Вы хотите удалить:     ")
+    return number_delete_book
+
 
 # Вывод сообщения при выборе поиска книги
 def message_search_books():
