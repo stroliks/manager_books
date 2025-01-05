@@ -28,7 +28,12 @@ def work_with_catalog(file):
                 catalog = search_book(file, searсh_word)
                 print_list(catalog)
 
-            #elif action_in_catalog == "С":
+            elif action_in_catalog == "С":
+                from GraficUserInterface import message_sort_books, print_list
+                sort_atribute = message_sort_books()
+                sort_books = sort_catalog(file, sort_atribute)
+                print_list(sort_books)
+
             #elif action_in_catalog == "Э":
 
 
@@ -130,17 +135,6 @@ def search_book(file, searсh_word):
     return list_search_book
 
 
-# вспомогательная функция определения ключа сортировки
-def get_key(line, sort_atribute):
-    if sort_atribute == "А":
-        iter = 1
-    elif sort_atribute == "Г":
-        iter = 2
-    elif sort_atribute == "Ж":
-        iter = 3
-    words = line.split("- ", maxsplit = iter)
-    return words[iter]
-
 # функция сортировки книг в каталоге
 def sort_catalog(file, sort_atribute):
     catalog = []
@@ -150,6 +144,16 @@ def sort_catalog(file, sort_atribute):
         sort_catalog = sorted(catalog)
         file.close()
         return sort_catalog
+
+    def get_key(sort_atribute):
+        if sort_atribute == "А":
+            iter = 1
+        elif sort_atribute == "Г":
+            iter = 2
+        elif sort_atribute == "Ж":
+            iter = 3
+        words = catalog.split("- ", maxsplit=iter)
+        return words[iter]
     sort_catalog = sorted(catalog, key = get_key)
     file.close()
     return sort_catalog
