@@ -34,10 +34,17 @@ def message_result_create_catalog(value, name_catalog):
 # ФУНКЦИИ ВЫВОДА СООБЩЕНИЙ ПРИ УДАЛЕНИИ КАТАЛОГА
 #____________________________________________________________________________________________________________________
 # Вывод сообщения при удалении каталога (подтверждение удаления)
-def message_delete_catalog():
+def message_confirm_delete_catalog():
     confirm_delete_catalog = input("каталог будет полностью удален, останется лишь статистическая информация.\n"
                                    "Вы точно хотите удалить каталог?? (Да или Нет) :    ")
     return confirm_delete_catalog
+
+# Вывод сообщения результатов удалении каталога
+def message_result_delete_catalog(result_delete:bool):
+    if result_delete == True:
+        print("Каталог успешно удален!!!")
+    else:
+        print("Текущий рабочий каталог отсутствует. Нечего удалять")
 
 
 
