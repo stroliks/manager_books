@@ -10,7 +10,11 @@ def work_with_catalog(file):
                 name_book, author_book, year_book, genre_book = message_add_book()
                 add_book(file, name_book, author_book, year_book, genre_book)
             elif action_in_catalog == "У":
-                
+                from GraficUserInterface import message_delete_book, view_list_books
+                view_list_books(file)
+                number_book = message_delete_book()
+                delete_book(file, number_book)
+
             elif action_in_catalog == "О":
                 from GraficUserInterface import view_list_books
                 print(f"В текущем каталоге находятся следующие книги:  ")
@@ -93,7 +97,8 @@ def add_book(file, name_book, author_book, year_book, genre_book):
     file.close()
 
 # функция удаления книги из каталога
-
+def delete_book(file, number_book):
+    file = open(file, "a")
 
 # функция поиска книги в каталоге
 
