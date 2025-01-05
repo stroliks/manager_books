@@ -129,14 +129,9 @@ def search_book(file, searсh_word):
     file.close()
     return list_search_book
 
-# функция сортировки книг в каталоге
-def sort_catalog(file, sort_atribute):
-    catalog = []
-    file = open(file, "r")
-    catalog = file.readlines()
 
 # вспомогательная функция определения ключа сортировки
-def key(line, sort_atribute):
+def get_key(line, sort_atribute):
     if sort_atribute == "А":
         iter = 1
     elif sort_atribute == "Г":
@@ -145,6 +140,21 @@ def key(line, sort_atribute):
         iter = 3
     words = line.split("- ", maxsplit = iter)
     return words[iter]
+
+# функция сортировки книг в каталоге
+def sort_catalog(file, sort_atribute):
+    catalog = []
+    file = open(file, "r")
+    catalog = file.readlines()
+    if sort_atribute == "Н":
+        sort_catalog = sorted(catalog)
+        file.close()
+        return sort_catalog
+    sort_catalog = sorted(catalog, key = get_key)
+    file.close()
+    return sort_catalog
+
+
 
 
 # функция экспорта каталога
