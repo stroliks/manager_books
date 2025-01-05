@@ -113,6 +113,12 @@ def message_search_books():
     search_word = input(f"Введите букву либо часть слова названия книги или ее автора, которую Вы хотите найти:     ")
     return search_word
 
+# Функция вывода списка
+def print_list(lst):
+    for line in lst:
+        print(line)
+        print()
+
 # Вывод сообщения при выборе сортировки списка книг
 def message_sort_books():
     print("По выбранному атрибуту список книг будет отсортирован в порядке возрастания.\n"
