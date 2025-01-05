@@ -6,7 +6,7 @@ def work_with_catalog(file):
         from GraficUserInterface import msg_select_act_in_catalog, message_add_book
         action_in_catalog = msg_select_act_in_catalog()
         while action_in_catalog != "Н":
-            
+
             if action_in_catalog == "Д":
                 name_book, author_book, year_book, genre_book = message_add_book()
                 add_book(file, name_book, author_book, year_book, genre_book)
@@ -120,15 +120,31 @@ def delete_book(file, number_book):
 
 # функция поиска книги в каталоге
 def search_book(file, searсh_word):
-    list_searh_book = []
+    list_search_book = []
     file = open(file, "r")
     catalog = file.readlines()
     for book in catalog:
         if searсh_word in book:
-            list_searh_book.append(book)
+            list_search_book.append(book)
     file.close()
-    return list_searh_book
+    return list_search_book
 
 # функция сортировки книг в каталоге
+def sort_catalog(file, sort_atribute):
+    catalog = []
+    file = open(file, "r")
+    catalog = file.readlines()
+
+# вспомогательная функция определения ключа сортировки
+def key(line, sort_atribute):
+    if sort_atribute == "А":
+        iter = 1
+    elif sort_atribute == "Г":
+        iter = 2
+    elif sort_atribute == "Ж":
+        iter = 3
+    words = line.split("- ", maxsplit = iter)
+    return words[iter]
+
 
 # функция экспорта каталога
