@@ -99,11 +99,14 @@ def message_delete_book():
     return confirm_delete_book
 
 
-# Вывод сообщения при отображении книг в каталоге.. ДОРАБОТАТЬ!!!
-def message_list_books(catalog):
-    print(f"В текущем каталоге находятся следующие книги:  ")
-    print()
-    pass
+# Вывод сообщения при отображении книг в каталоге
+def view_list_books(file):
+    catalog = []
+    file = open(file, "r")
+    catalog = file.readlines()
+    for line in catalog:
+        print(line)
+        print()
 
 # Вывод сообщения при выборе поиска книги
 def message_search_books():
