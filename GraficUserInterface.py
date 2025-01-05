@@ -1,10 +1,14 @@
-import Bussiness_Logic_Upper
+from Business_Logic_Upper import *
+from Business_Logic_Lower import *
 
 
-# Сообщение прветствия при запуске программы
+# Сообщение прветствия при запуске и завершении программы
 def greeting():
     print("Добро пожаловать в приложение по управлению каталогом книг!")
+    print()
 
+def goodbye():
+    print("Хорошего дня! Ждем Вас снова!")
 
 # Вывод сообщения о  выборе первоначального действия с каталогом
 def message_first_select():
@@ -14,6 +18,7 @@ def message_first_select():
           "П - Просмотр истории каталогов \n"
           "Р - Работа с каталогом (добавление/удаление книг, просмотр информации о книгах, экспорт каталога) \n"
           "В - Выход из приложения")
+    print()
     first_select_action = input("Введите первую букву желаемого действия:     ")
     return first_select_action
 
@@ -28,8 +33,10 @@ def message_create_catalog():
 def message_result_create_catalog(value, name_catalog):
     if value == True:
         print ("Создание нового каталога невозможно! Каталог уже существует!!!")
+        print()
     else:
         print(f"Каталог под названием <<{name_catalog}>> успешно создан!")
+        print()
 
 
 # ФУНКЦИИ ВЫВОДА СООБЩЕНИЙ ПРИ УДАЛЕНИИ КАТАЛОГА
@@ -44,8 +51,10 @@ def message_confirm_delete_catalog():
 def message_result_delete_catalog(result_delete):
     if result_delete == True:
         print("Каталог успешно удален!!!")
+        print()
     else:
         print("Текущий рабочий каталог отсутствует. Нечего удалять")
+        print()
 
 
 
@@ -54,11 +63,12 @@ def message_result_delete_catalog(result_delete):
 # Вывод сообщения при просмотре истории каталогов
 def message_catalogs_history(list_catalog):
     print(f"За время функционирования программы было создано {len(list_catalog)}  каталогов (включая текущий):  ")
-    for i in range(list_catalog):
-        print(f"{i+1}. Каталог с именем {list_catalog[i]}, на момент удаления содержал {} книг")
+    print()
+    for i in range(len(list_catalog)):
+        print(f"{i+1}. Каталог с именем {list_catalog[i]}, на момент удаления содержал {i} книг")
         print()
 
-
+#_______________________________________________________________________________________________________________________
 # Вывод сообщения при работе с каталогом
 def msg_select_act_in_catalog():
     print("Пожалуйста, с помощью ввода начальных букв выберете желаемое действие со списком книг: \n"
@@ -69,6 +79,7 @@ def msg_select_act_in_catalog():
           "С - Сортировка книг в каталоге \n"
           "Э - Экспорт списка книг из каталога \n"
           "Н - Назад в главное меню")
+    print()
     select_act_in_catalog = input("Введите первую букву желаемого действия:     ")
     return select_act_in_catalog
 
@@ -91,6 +102,7 @@ def message_delete_book():
 # Вывод сообщения при отображении книг в каталоге.. ДОРАБОТАТЬ!!!
 def message_list_books(catalog):
     print(f"В текущем каталоге находятся следующие книги:  ")
+    print()
     pass
 
 # Вывод сообщения при выборе поиска книги
@@ -107,6 +119,7 @@ def message_sort_books():
         "П - Автор книги\n"
         "Г - Год издания книги \n"
         "Ж - Жанр книги")
+    print()
     sort_atribute = input(f"По выбранному атрибуту список книг будет отсортирован в порядке возрастания.\n"
                           f"Введите первую букву атрибута сортировки списка: ")
     return sort_atribute
@@ -116,6 +129,7 @@ def message_export_catalog():
     print("Выберите формат экспорта каталога:     \n"
         "C - CSV   \n"
         "J - JSON   \n"
-        "T - TXT   \n"
+        "T - TXT   \n")
+    print()
     export_format = input("Введите первую букву форматf экспорта каталога:   ")
     return export_format
