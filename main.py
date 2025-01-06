@@ -1,5 +1,7 @@
+
 def main():
-    from core import
-    pass
+    from core import start_programm
+    start_programm()
+
 
 main()
