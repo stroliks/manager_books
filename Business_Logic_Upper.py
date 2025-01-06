@@ -65,12 +65,12 @@ def work_with_catalog(path_file):
             from GraficUserInterface import message_delete_book, view_list_books
             view_list_books(path_file)
             number_book = message_delete_book()
-            file = os.path.basename(path_file)
-            delete_book(file, number_book)
+            delete_book(path_file, number_book)
 
         elif action_in_catalog == "О":
             from GraficUserInterface import view_list_books
             print(f"В текущем каталоге находятся следующие книги:  ")
+            print()
             view_list_books(path_file)
 
         elif action_in_catalog == "П":
@@ -124,16 +124,15 @@ def add_book(file, name_book, author_book, year_book, genre_book):
 
 
 # функция удаления книги из каталога
-def delete_book(file, number_book):
+def delete_book(path_file, number_book):
     catalog = []
-    file = open(file, "r")
+    file = open(path_file, "r")
     catalog = file.readlines()
     file.close()
-    file = open(file, "w")
-    for book in catalog:
-        if book != number_book:
-            file.write(book)
-        book += 1
+    file = open(path_file, "w")
+    for line in range(len(catalog)):
+        if line != (number_book-1):
+            file.write(catalog[line])
     file.close()
 
 
