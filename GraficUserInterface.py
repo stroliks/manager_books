@@ -77,6 +77,7 @@ def message_catalogs_history(list_catalog):
 #_______________________________________________________________________________________________________________________
 # Вывод сообщения при работе с каталогом
 def msg_select_act_in_catalog():
+    print()
     print("Пожалуйста, с помощью ввода начальных букв выберете желаемое действие со списком книг: \n"
           "Д - Добавить книгу в каталог\n"
           "У - Удалить книгу из каталога\n"
@@ -105,7 +106,8 @@ def view_list_books(file):
     file = open(file, "r")
     catalog = file.readlines()
     for i, line in enumerate(catalog, start=1):
-        print(f"{i}.{line}")
+        print(f"{i}. {line}", end = "")
+    print()
 
 
 # Вывод сообщения при выборе  книги для удаления
