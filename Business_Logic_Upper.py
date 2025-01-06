@@ -165,7 +165,7 @@ def sort_catalog(file, sort_atribute):
             iter = 2
         elif sort_atribute == "Ж":
             iter = 3
-        words = catalog.split("- ", maxsplit=iter)
+        words = catalog.split(" - ", maxsplit=iter)
         return words[iter]
 
     sort_catalog_ = sorted(catalog, key=get_key)
