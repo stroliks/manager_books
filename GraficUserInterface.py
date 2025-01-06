@@ -20,6 +20,7 @@ def message_first_select():
           "В - Выход из приложения")
     print()
     first_select_action = input("Введите первую букву желаемого действия:     ")
+    print()
     return first_select_action
 
 # ФУНКЦИИ ВЫВОДА СООБЩЕНИЙ ПРИ СОЗДАНИИ КАТАЛОГА

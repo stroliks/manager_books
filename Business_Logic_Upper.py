@@ -1,5 +1,6 @@
 from Business_Logic_Lower import *
 import csv
+import os
 
 
 
@@ -64,7 +65,8 @@ def work_with_catalog(path_file):
             from GraficUserInterface import message_delete_book, view_list_books
             view_list_books(path_file)
             number_book = message_delete_book()
-            delete_book(path_file, number_book)
+            file = os.path.basename(path_file)
+            delete_book(file, number_book)
 
         elif action_in_catalog == "О":
             from GraficUserInterface import view_list_books
@@ -117,7 +119,7 @@ def delete_catalog():
 # функция добавления книги в каталог
 def add_book(file, name_book, author_book, year_book, genre_book):
     file = open(file, "a")
-    file.write(name_book + author_book + year_book + genre_book)
+    file.write(f"{name_book} - {author_book} - {year_book} - {genre_book}\n")
     file.close()
 
 
@@ -126,7 +128,6 @@ def delete_book(file, number_book):
     catalog = []
     file = open(file, "r")
     catalog = file.readlines()
-    book = 1
     file.close()
     file = open(file, "w")
     for book in catalog:
