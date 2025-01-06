@@ -76,7 +76,7 @@ def work_with_catalog(path_file):
         elif action_in_catalog == "П":
             from GraficUserInterface import message_search_books, print_list
             search_word = message_search_books()
-            catalog = search_book(path_file, searсh_word)
+            catalog = search_book(path_file, search_word)
             print_list(catalog)
 
         elif action_in_catalog == "С":

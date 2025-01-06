@@ -124,9 +124,9 @@ def message_search_books():
 
 # Функция вывода списка
 def print_list(lst):
+    print()
     for line in lst:
-        print(line)
-        print()
+        print(line, end="")
 
 
 # Вывод сообщения при выборе сортировки списка книг

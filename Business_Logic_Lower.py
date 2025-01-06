@@ -10,8 +10,10 @@ def exist_catalog():
             return True
     return False
 
+
 # функция ведения реестра созданных каталогов
 list_catalog = []
+
+
 def reestr_catalog(name_catalog):
     list_catalog.append(name_catalog)
-
