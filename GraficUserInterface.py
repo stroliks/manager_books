@@ -7,8 +7,10 @@ def greeting():
     print("Добро пожаловать в приложение по управлению каталогом книг!")
     print()
 
+
 def goodbye():
     print("Хорошего дня! Ждем Вас снова!")
+
 
 # Вывод сообщения о  выборе первоначального действия с каталогом
 def message_first_select():
@@ -23,17 +25,19 @@ def message_first_select():
     print()
     return first_select_action
 
+
 # ФУНКЦИИ ВЫВОДА СООБЩЕНИЙ ПРИ СОЗДАНИИ КАТАЛОГА
 #___________________________________________________________________________________________________________________
 # Вывод сообщения при создании каталога
 def message_create_catalog():
-       name_catalog = input("Введите название каталога:   ")
-       return name_catalog
+    name_catalog = input("Введите название каталога:   ")
+    return name_catalog
+
 
 # Вывод сообщения при уже существующем каталоге либо при успешном создании:
 def message_result_create_catalog(value, name_catalog):
     if value == True:
-        print ("Создание нового каталога невозможно! Каталог уже существует!!!")
+        print("Создание нового каталога невозможно! Каталог уже существует!!!")
         print()
     else:
         print(f"Каталог под названием <<{name_catalog}>> успешно создан!")
@@ -48,6 +52,7 @@ def message_confirm_delete_catalog():
                                    "Вы точно хотите удалить каталог?? (Да или Нет) :    ")
     return confirm_delete_catalog
 
+
 # Вывод сообщения результатов удалении каталога
 def message_result_delete_catalog(result_delete):
     if result_delete == True:
@@ -58,7 +63,6 @@ def message_result_delete_catalog(result_delete):
         print()
 
 
-
 # ФУНКЦИИ ВЫВОДА СООБЩЕНИЙ при просмотре истории каталогов
 #_____________________________________________________________________________________________________________________
 # Вывод сообщения при просмотре истории каталогов
@@ -66,8 +70,9 @@ def message_catalogs_history(list_catalog):
     print(f"За время функционирования программы было создано {len(list_catalog)}  каталогов (включая текущий):  ")
     print()
     for i in range(len(list_catalog)):
-        print(f"{i+1}. Каталог с именем {list_catalog[i]}, на момент удаления содержал {i} книг")
+        print(f"{i + 1}. Каталог с именем {list_catalog[i]}, на момент удаления содержал {i} книг")
         print()
+
 
 #_______________________________________________________________________________________________________________________
 # Вывод сообщения при работе с каталогом
@@ -87,11 +92,11 @@ def msg_select_act_in_catalog():
 
 # Вывод сообщения при добавлении книги... ПОДУМАТЬ О CОЗДАНИИ ВЫПАДАЮЩЕГО СПИСКА ПРИ ВЫБОРЕ ЖАНРА
 def message_add_book():
-       name_book = input("Введите название книги:   ")
-       author_book = input("Введите автора книги:   ")
-       year_book = input("Введите год издания книги:   ")
-       genre_book = input("Введите жанр книги:   ")
-       return name_book, author_book, year_book, genre_book
+    name_book = input("Введите название книги:   ")
+    author_book = input("Введите автора книги:   ")
+    year_book = input("Введите год издания книги:   ")
+    genre_book = input("Введите жанр книги:   ")
+    return name_book, author_book, year_book, genre_book
 
 
 # Вывод сообщения при отображении книг в каталоге
@@ -102,9 +107,10 @@ def view_list_books(file):
     for i, line in enumerate(catalog, start=1):
         print(f"{i}.{line}")
 
+
 # Вывод сообщения при выборе  книги для удаления
 def message_delete_book():
-    number_delete_book = input(f"Введите порядковый номер книги, которую Вы хотите удалить:     ")
+    number_delete_book = int(input(f"Введите порядковый номер книги, которую Вы хотите удалить:     "))
     return number_delete_book
 
 
@@ -113,30 +119,33 @@ def message_search_books():
     search_word = input(f"Введите букву либо часть слова названия книги или ее автора, которую Вы хотите найти:     ")
     return search_word
 
+
 # Функция вывода списка
 def print_list(lst):
     for line in lst:
         print(line)
         print()
 
+
 # Вывод сообщения при выборе сортировки списка книг
 def message_sort_books():
     print("По выбранному атрибуту список книг будет отсортирован в порядке возрастания.\n"
           "Перечень атрибутов сортировки:     \n"
-        "Н - Название книги\n"
-        "А - Автор книги\n"
-        "Г - Год издания книги \n"
-        "Ж - Жанр книги")
+          "Н - Название книги\n"
+          "А - Автор книги\n"
+          "Г - Год издания книги \n"
+          "Ж - Жанр книги")
     print()
     sort_atribute = input(f"По выбранному атрибуту список книг будет отсортирован в порядке возрастания.\n"
                           f"Введите первую букву атрибута сортировки списка: ")
     return sort_atribute
 
+
 # Вывод сообщения при выборе экспорта каталога
 def message_export_catalog():
     print("Выберите формат экспорта каталога:     \n"
-        "C - CSV   \n"
-        "T - TXT   \n")
+          "C - CSV   \n"
+          "T - TXT   \n")
     print()
     export_format = input("Введите первую букву форматf экспорта каталога:   ")
     return export_format
