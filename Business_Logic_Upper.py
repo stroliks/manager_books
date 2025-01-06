@@ -1,3 +1,5 @@
+from typing import List
+
 from Business_Logic_Lower import *
 import csv
 import os
@@ -81,15 +83,15 @@ def work_with_catalog(path_file):
 
         elif action_in_catalog == "С":
             from GraficUserInterface import message_sort_books, print_list
-            sort_atribute = message_sort_books()
-            sort_books = sort_catalog(path_file, sort_atribute)
+            value_sort = message_sort_books()
+            sort_books = sort_catalog_main(path_file, value_sort)
             print_list(sort_books)
 
         elif action_in_catalog == "Э":
             from GraficUserInterface import message_export_catalog
-            format = message_export_catalog()
-            if format == "C":
-                export_catalog(path_file, name_catalog)
+            ex_format = message_export_catalog()
+            if ex_format == "C":
+                export_catalog(path_file)
                 return True
             return False
         action_in_catalog = msg_select_act_in_catalog()
@@ -137,40 +139,35 @@ def delete_book(path_file, number_book):
 
 
 # функция поиска книги в каталоге
-def search_book(file, searсh_word):
+def search_book(file, search_word):
     list_search_book = []
     file = open(file, "r")
     catalog = file.readlines()
     for book in catalog:
-        if searсh_word in book:
+        if search_word in book:
             list_search_book.append(book)
     file.close()
     return list_search_book
 
 
 # функция сортировки книг в каталоге
-def sort_catalog(file, sort_atribute):
+
+def sort_catalog_main(file, value_sort):
     catalog = []
     file = open(file, "r")
     catalog = file.readlines()
-    if sort_atribute == "Н":
-        sort_catalog = sorted(catalog)
-        file.close()
-        return sort_catalog
-
-    def get_key(sort_atribute):
-        if sort_atribute == "А":
-            iter = 1
-        elif sort_atribute == "Г":
-            iter = 2
-        elif sort_atribute == "Ж":
-            iter = 3
-        words = catalog.split(" - ", maxsplit=iter)
-        return words[iter]
-
-    sort_catalog_ = sorted(catalog, key=get_key)
+    if value_sort == "Н":
+        ind = 1
+    elif value_sort == "А":
+        ind = 0
+    elif value_sort == "Г":
+        ind = 2
+    elif value_sort == "Ж":
+        ind = 3
+    sort_catalog = sorted(catalog, key= lambda line: line.split(" - ")[ind])
     file.close()
-    return sort_catalog_
+    return sort_catalog
+
 
 
 # функция экспорта каталога
