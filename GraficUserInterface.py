@@ -99,9 +99,8 @@ def view_list_books(file):
     catalog = []
     file = open(file, "r")
     catalog = file.readlines()
-    for i, line in enumerate(catalog, start = 1):
+    for i, line in enumerate(catalog, start=1):
         print(f"{i}.{line}")
-        print()
 
 # Вывод сообщения при выборе  книги для удаления
 def message_delete_book():
