@@ -144,10 +144,6 @@ def message_sort_books():
 
 
 # Вывод сообщения при выборе экспорта каталога
-def message_export_catalog():
-    print("Выберите формат экспорта каталога:     \n"
-          "C - CSV   \n"
-          "T - TXT   \n")
+def message_result_export_catalog():
+    print("Файл успешно экспортирован в формат CSV!")
     print()
-    export_format = input("Введите первую букву форматf экспорта каталога:   ")
-    return export_format

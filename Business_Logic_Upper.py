@@ -88,12 +88,9 @@ def work_with_catalog(path_file):
             print_list(sort_books)
 
         elif action_in_catalog == "Э":
-            from GraficUserInterface import message_export_catalog
-            ex_format = message_export_catalog()
-            if ex_format == "C":
-                export_catalog(path_file)
-                return True
-            return False
+            from GraficUserInterface import message_result_export_catalog
+            export_catalog(path_file)
+            message_result_export_catalog()
         action_in_catalog = msg_select_act_in_catalog()
 
 
@@ -171,12 +168,12 @@ def sort_catalog_main(file, value_sort):
 
 
 # функция экспорта каталога
-def export_catalog(file, name_catalog):
+def export_catalog(file):
     catalog = []
     file = open(file, "r")
     catalog = file.readlines()
 
-    file_csv = open(f"{name_catalog}.csv", "w", newline="")
+    file_csv = open("Ваш каталог книг.csv", "w", newline="")
     writer = csv.writer(file_csv)
     for line in catalog:
         writer.writerow([line])
