@@ -1,5 +1,6 @@
 from Business_Logic_Upper import *
 from Business_Logic_Lower import *
+from tabulate import tabulate
 
 
 # Сообщение прветствия при запуске и завершении программы
@@ -125,8 +126,12 @@ def message_search_books():
 # Функция вывода списка
 def print_list(lst):
     print()
+    table = []
     for line in lst:
-        print(line, end="")
+        line = line.split(" - ")
+        table.append(line)
+    print_table = tabulate(table, headers=["Автор","Название","Год издания","Жанр"])
+    print(print_table)
 
 
 # Вывод сообщения при выборе сортировки списка книг
