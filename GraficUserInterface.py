@@ -67,11 +67,14 @@ def message_result_delete_catalog(result_delete):
 # ФУНКЦИИ ВЫВОДА СООБЩЕНИЙ при просмотре истории каталогов
 #_____________________________________________________________________________________________________________________
 # Вывод сообщения при просмотре истории каталогов
-def message_catalogs_history(list_catalog):
-    print(f"За время функционирования программы было создано {len(list_catalog)}  каталогов (включая текущий):  ")
+def message_catalogs_history(file):
+    file = open(file, "r")
+    lst_catalog = []
+    lst_catalog = file.readlines()
+    print(f"За время функционирования программы было создано {len(lst_catalog)}  каталогов (включая текущий):  ")
     print()
-    for i in range(len(list_catalog)):
-        print(f"{i + 1}. Каталог с именем {list_catalog[i]}, на момент удаления содержал {i} книг")
+    for line in enumerate(lst_catalog):
+        print(f"{i + 1}. Каталог с именем {line}")
         print()
 
 
