@@ -1,8 +1,9 @@
+from fileinput import filename
 from typing import List
 
-from Business_Logic_Lower import *
 import csv
 import os
+
 
 
 
@@ -12,6 +13,7 @@ def global_function(action):
     from GraficUserInterface import message_first_select
     if action == "С":
         from GraficUserInterface import message_create_catalog, message_result_create_catalog
+        from Business_Logic_Lower import exist_catalog, reestr_catalog
         result_exist = exist_catalog()
         name_catalog = None
         if not result_exist:
@@ -21,8 +23,8 @@ def global_function(action):
         return message_result_create_catalog(result_exist, name_catalog)
 
     elif action == "У":
-        from GraficUserInterface import message_confirm_delete_catalog, message_result_delete_catalog, \
-            message_create_catalog
+        from GraficUserInterface import message_confirm_delete_catalog, message_result_delete_catalog, message_create_catalog
+        from Business_Logic_Lower import exist_catalog, reestr_catalog
         if message_confirm_delete_catalog() == "Да":
             result_exist = exist_catalog()
             if result_exist:
@@ -30,25 +32,39 @@ def global_function(action):
             return message_result_delete_catalog(result_exist)
 
         elif message_confirm_delete_catalog() == "Нет":
-            message_first_select()
+            return
 
     elif action == "П":
         from GraficUserInterface import message_catalogs_history
-        message_catalogs_history(list_catalog)
+        from Business_Logic_Lower import exist_reestr
+        result_exist_reestr = exist_reestr()
+        if  result_exist_reestr == True:
+            message_catalogs_history(f"Реестр каталогов.txt")
+        else:
+            print("История каталогов отсутствует, так как еще не создавалось ни одного каталога")
 
     elif action == "Р":
-        result_exist = exist_catalog()
-        if result_exist:
-            path = os.getcwd()
-            path_file = None
-            for work_file in os.listdir(path):
-                if work_file.endswith(".txt"):
-                    path_file = os.path.abspath(work_file)
-            work_with_catalog(path_file)
+        from Business_Logic_Lower import name_catalog, exist_catalog, exist_reestr
+        from GraficUserInterface import msg_offer_create_or_use_test_catalog, empty_reestr
+        result_exist_ = exist_reestr()
+        if  result_exist_ == False:
+            select_user = empty_reestr()
+            if select_user == "Т":
+                work_with_catalog("test_catalog.txt")
+            elif select_user == "Н":
+                return
         else:
-            print("Каталог книг отсутствует. Для начала создайте каталог!")
-            print()
-            print()
+            filename = name_catalog()
+            result_exist = exist_catalog()
+            if result_exist:
+                work_with_catalog(filename)
+            else:
+                result_offer = msg_offer_create_or_use_test_catalog()
+                if result_offer == "Т":
+                    work_with_catalog("test_catalog.txt")
+                elif result_offer == "Н":
+                    return
+
 
 
 # ФУНКЦИЯ ФУНКЦИОНИРОВАНИЯ ПРОГРАММЫ ПРИ  РАБОТЕ C КАТАЛОГОМ
