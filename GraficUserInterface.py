@@ -72,8 +72,8 @@ def message_catalogs_history(file):
     lst_catalog = file.readlines()
     print(f"За время функционирования программы было создано {len(lst_catalog)}  каталогов (включая текущий):  ")
     print()
-    for line in enumerate(lst_catalog):
-        print(f"{i + 1}. Каталог с именем {line}")
+    for i, line in enumerate(lst_catalog):
+        out_yellow(f"{i + 1}. Каталог с именем {line}")
         print()
 
 
@@ -134,7 +134,7 @@ def view_list_books(file):
         line.insert(0, i)
         table.append(line)
     print_table = tabulate(table, headers=["Номер п/п","Автор","Название","Год издания","Жанр"])
-    print(print_table)
+    out_yellow(print_table)
     file.close()
 
 
@@ -158,7 +158,7 @@ def print_list(lst):
         line = line.split(" - ")
         table.append(line)
     print_table = tabulate(table, headers=["Автор","Название","Год издания","Жанр"])
-    print(print_table)
+    out_yellow(print_table)
 
 
 # Вывод сообщения при выборе сортировки списка книг
@@ -182,7 +182,7 @@ def message_result_export_catalog():
 
 # функции окраски цветом
 def out_red(text):
-    print("\033[31m {}" .format(text))
-    
+    print("\033[31m {}\033[0m" .format(text))
+
 def out_yellow(text):
-    print("\033[33m {}" .format(text))
+    print("\033[33m {}\033[0m" .format(text))
