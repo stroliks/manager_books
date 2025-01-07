@@ -140,7 +140,7 @@ def view_list_books(file):
 
 # Вывод сообщения при выборе  книги для удаления
 def message_delete_book():
-    number_delete_book = int(input(f"Введите порядковый номер книги, которую Вы хотите удалить:     "))
+    number_delete_book = int(input(f"Введите порядковый номер книги, которую Вы хотите удалить или 0 для отмены действия:     "))
     return number_delete_book
 
 
