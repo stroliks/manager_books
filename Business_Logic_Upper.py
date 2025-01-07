@@ -92,10 +92,11 @@ def work_with_catalog(path_file):
             view_list_books(path_file)
 
         elif action_in_catalog == "П":
-            from GraficUserInterface import message_search_books, print_list
+            from GraficUserInterface import message_search_books, print_list, print_list_with_search_word
             search_word = message_search_books()
             catalog = search_book(path_file, search_word)
             print_list(catalog)
+            print_list_with_search_word(catalog, search_word)
 
         elif action_in_catalog == "С":
             from GraficUserInterface import message_sort_books, print_list
