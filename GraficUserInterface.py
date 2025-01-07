@@ -161,6 +161,21 @@ def print_list(lst):
     out_yellow(print_table)
 
 
+def print_list_with_search_word(lst,search_word):
+    print("Хотите увидеть искомые слова в выведенных книгах??\n"
+          "Д - Да\n"
+          "Н - Нет")
+    result_select = input("Введите первую букву действия   >>> ")
+    if result_select == "Д":
+        for line in lst:
+            line = line.split(search_word)
+            for word in line:
+                print('\033[33m {} \033[0m'.format(word), end = "")
+                print('\033[31m {} \033[0m'.format(search_word), end = "")
+            print()
+    return
+
+
 # Вывод сообщения при выборе сортировки списка книг
 def message_sort_books():
     print("По выбранному атрибуту список книг будет отсортирован в порядке возрастания.\n"
