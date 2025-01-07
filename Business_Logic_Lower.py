@@ -6,14 +6,15 @@ from Business_Logic_Upper import *
 def exist_catalog():
     path = os.getcwd()
     for file in os.listdir(path):
-        if file.endswith(".txt"):
+        if file.endswith(".txt") and file:
             return True
     return False
 
 
 # функция ведения реестра созданных каталогов
-list_catalog = []
-
 
 def reestr_catalog(name_catalog):
-    list_catalog.append(name_catalog)
+    list_catalog = open(f"Реестр каталогов.txt", "a")
+    list_catalog.write(name_catalog)
+    list_catalog.close()
+    return True
