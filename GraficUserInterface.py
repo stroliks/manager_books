@@ -169,10 +169,10 @@ def print_list_with_search_word(lst,search_word):
     if result_select == "Д":
         for line in lst:
             line = line.split(search_word)
-            for word in line:
-                print('\033[33m {} \033[0m'.format(word), end = "")
-                print('\033[31m {} \033[0m'.format(search_word), end = "")
-            print()
+            for i in range(len(line)-1):
+                print('\033[33m{}\033[0m'.format(line[i]), end="")
+                print('\033[31m{}\033[0m'.format(search_word), end="")
+            print('\033[33m{}\033[0m'.format(line[-1]), end="")
     return
 
 
