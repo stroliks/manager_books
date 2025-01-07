@@ -104,11 +104,16 @@ def message_add_book():
 # Вывод сообщения при отображении книг в каталоге
 def view_list_books(file):
     catalog = []
+    table = []
     file = open(file, "r")
     catalog = file.readlines()
     for i, line in enumerate(catalog, start=1):
-        print(f"{i}. {line}", end = "")
-    print()
+        line = line.split(" - ")
+        line.insert(0, i)
+        table.append(line)
+    print_table = tabulate(table, headers=["Номер п/п","Автор","Название","Год издания","Жанр"])
+    print(print_table)
+    file.close()
 
 
 # Вывод сообщения при выборе  книги для удаления
