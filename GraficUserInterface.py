@@ -179,3 +179,10 @@ def message_sort_books():
 def message_result_export_catalog():
     print("Файл успешно экспортирован в формат CSV!")
     print()
+
+# функции окраски цветом
+def out_red(text):
+    print("\033[31m {}" .format(text))
+    
+def out_yellow(text):
+    print("\033[33m {}" .format(text))
