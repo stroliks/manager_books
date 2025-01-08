@@ -13,15 +13,16 @@ def global_function(action):
     if action == "С" or action == "C":
         from GraficUserInterface import message_create_catalog, message_result_create_catalog
         from Business_Logic_Lower import exist_catalog, reestr_catalog, exist_reestr
-        result_exist = True
-        name_catalog = None
         if not exist_reestr():
             file = open("Реестр каталогов.txt", "w")
             file.close()
-        name_catalog = message_create_catalog()
-        create_catalog(name_catalog)
-        reestr_catalog(name_catalog)
-        result_exist = False
+        name_catalog = None
+        result_exist = exist_catalog()
+        if not result_exist:
+            name_catalog = message_create_catalog()
+            create_catalog(name_catalog)
+            reestr_catalog(name_catalog)
+            result_exist = False
         return message_result_create_catalog(result_exist, name_catalog)
 
     elif action == "У":
@@ -32,10 +33,12 @@ def global_function(action):
             if result_exist:
                 if message_confirm_delete_catalog() == "Да":
                     delete_catalog()
+                    result_delete = True
                 elif message_confirm_delete_catalog() == "Нет":
                     return
-        result_exist = False
-        return message_result_delete_catalog(result_exist)
+            else:
+                result_delete = False
+        return message_result_delete_catalog(result_delete)
 
 
 
@@ -135,6 +138,7 @@ def delete_catalog():
     for file in os.listdir(path):
         if file.startswith(file_name):
             os.remove(file)
+    return file_name
 
 
 # ФУНКЦИИ ПРИ РАБОТЕ В КАТАЛОГЕ
