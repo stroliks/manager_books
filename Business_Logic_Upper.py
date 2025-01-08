@@ -11,7 +11,7 @@ import os
 
 def global_function(action):
     from GraficUserInterface import message_first_select
-    if action == "С":
+    if action == "С" or action == "C":
         from GraficUserInterface import message_create_catalog, message_result_create_catalog
         from Business_Logic_Lower import exist_catalog, reestr_catalog, exist_reestr
         if not exist_reestr():
