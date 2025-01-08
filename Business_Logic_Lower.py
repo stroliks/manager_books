@@ -12,6 +12,7 @@ def name_catalog():
     file.close()
     return name_catalog
 
+
 # функция проверки существования реестра каталогов
 def exist_reestr():
     path = os.getcwd()
@@ -24,8 +25,9 @@ def exist_reestr():
 def exist_catalog():
     filename = name_catalog()
     path = os.getcwd()
-    if filename in os.listdir(path):
-        return True
+    for content in os.listdir(path):
+        if filename in content:
+            return True
     return False
 
 
@@ -33,6 +35,7 @@ def exist_catalog():
 
 def reestr_catalog(name_catalog):
     list_catalog = open(f"Реестр каталогов.txt", "a")
+    list_catalog.write("\n")
     list_catalog.write(name_catalog)
     list_catalog.close()
     return list_catalog
