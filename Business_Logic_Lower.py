@@ -34,7 +34,6 @@ def exist_catalog():
     return False
 
 
-
 # функция ведения реестра созданных каталогов
 
 def reestr_catalog(name_catalog):
