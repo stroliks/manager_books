@@ -125,8 +125,6 @@ def message_add_book():
     return name_book, author_book, year_book, genre_book
 
 
-
-
 # Вывод сообщения при отображении книг в каталоге
 def view_list_books(file):
     catalog = []
