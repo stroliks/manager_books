@@ -43,15 +43,3 @@ def reestr_catalog(name_catalog):
     list_catalog.write(" ")
     list_catalog.close()
     return list_catalog
-
-
-# функция удаления каталога
-def delete_catalog():
-    path = os.getcwd()
-    file_name = name_catalog()
-    for file in os.listdir(path):
-        if file.startswith(file_name):
-            os.remove(file)
-    return  file.startswith(file_name)
-
-print(delete_catalog())
