@@ -28,7 +28,9 @@ def global_function(action):
     elif action == "У":
         from GraficUserInterface import message_confirm_delete_catalog, message_result_delete_catalog, message_create_catalog
         from Business_Logic_Lower import exist_catalog, reestr_catalog, exist_reestr
-        if exist_reestr():
+        if not exist_reestr():
+            result_delete = False
+        else:
             result_exist = exist_catalog()
             if result_exist:
                 if message_confirm_delete_catalog() == "Да":
@@ -39,8 +41,6 @@ def global_function(action):
             else:
                 result_delete = False
         return message_result_delete_catalog(result_delete)
-
-
 
     elif action == "П":
         from GraficUserInterface import message_catalogs_history, out_red
