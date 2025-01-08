@@ -4,7 +4,7 @@ from typing import List
 import csv
 import os
 
-
+from Business_Logic_Lower import name_catalog
 
 
 # ФУНКЦИЯ НЕПОСРЕДСТВЕННОГО ФУНКЦИОНИРОВАНИЯ ПРОГРАММЫ ПРИ ПЕРВОМ ВЫБОРЕ ПОЛЬЗОВАТЕЛЯ
@@ -28,6 +28,7 @@ def global_function(action):
     elif action == "У":
         from GraficUserInterface import message_confirm_delete_catalog, message_result_delete_catalog, message_create_catalog
         from Business_Logic_Lower import exist_catalog, reestr_catalog
+
         if message_confirm_delete_catalog() == "Да":
             result_exist = exist_catalog()
             if result_exist:
@@ -38,13 +39,13 @@ def global_function(action):
             return
 
     elif action == "П":
-        from GraficUserInterface import message_catalogs_history
+        from GraficUserInterface import message_catalogs_history, out_red
         from Business_Logic_Lower import exist_reestr
         result_exist_reestr = exist_reestr()
         if  result_exist_reestr == True:
             message_catalogs_history(f"Реестр каталогов.txt")
         else:
-            print("История каталогов отсутствует, так как еще не создавалось ни одного каталога")
+            out_red("История каталогов отсутствует, так как еще не создавалось ни одного каталога")
 
     elif action == "Р":
         from Business_Logic_Lower import name_catalog, exist_catalog, exist_reestr
@@ -127,8 +128,9 @@ def create_catalog(name_catalog):
 # функция удаления каталога
 def delete_catalog():
     path = os.getcwd()
+    file_name = name_catalog()
     for file in os.listdir(path):
-        if file.endswith(".txt"):
+        if file.startswith(file_name):
             os.remove(file)
 
 
