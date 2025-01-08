@@ -1,18 +1,18 @@
 import os
 from Business_Logic_Upper import *
 
-# функция определение имени последнего каталога
+# функция определения имени последнего каталога
 def name_catalog():
-    if not exist_reestr():
-        file = open("Реестр каталогов.txt", "a")
-        file.close()
     file = open("Реестр каталогов.txt", "r")
     lst_catalog = file.readlines()
     lengt_catalog = len(lst_catalog)
+    if lengt_catalog == 0:
+        return None
     name_catalog = lst_catalog[lengt_catalog - 1]
     file.close()
     return name_catalog
 
+# функция проверки существования реестра каталогов
 def exist_reestr():
     path = os.getcwd()
     if "Реестр каталогов.txt" in os.listdir(path):
