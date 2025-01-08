@@ -4,7 +4,8 @@ from Business_Logic_Upper import *
 # функция определения имени последнего каталога
 def name_catalog():
     file = open("Реестр каталогов.txt", "r")
-    lst_catalog = file.readlines()
+    lst_catalog = file.readline()
+    lst_catalog = lst_catalog.split(" ")
     lengt_catalog = len(lst_catalog)
     if lengt_catalog == 0:
         return "|"
@@ -35,7 +36,8 @@ def exist_catalog():
 # функция ведения реестра созданных каталогов
 
 def reestr_catalog(name_catalog):
-    list_catalog = open(f"Реестр каталогов.txt", "w")
+    list_catalog = open(f"Реестр каталогов.txt", "a")
     list_catalog.write(name_catalog)
+    list_catalog.write(" ")
     list_catalog.close()
     return list_catalog
