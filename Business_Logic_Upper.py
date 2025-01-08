@@ -85,20 +85,19 @@ def work_with_catalog(path_file):
         if action_in_catalog == "Д":
             from GraficUserInterface import message_add_book
             name_book, author_book, year_book, genre_book = message_add_book()
-            path_file = name_catalog()
             add_book(path_file, name_book, author_book, year_book, genre_book)
 
         elif action_in_catalog == "У":
-            from GraficUserInterface import message_delete_book, view_list_books
+            from GraficUserInterface import message_delete_book, view_list_books, out_yellow
             view_list_books(path_file)
             number_book = message_delete_book()
             delete_book(path_file, number_book)
+            out_yellow("Книга успешно удалена!!!")
 
         elif action_in_catalog == "О":
             from GraficUserInterface import view_list_books
             print(f"В текущем каталоге находятся следующие книги:  ")
             print()
-            path_file = name_catalog()
             view_list_books(path_file)
 
         elif action_in_catalog == "П":
