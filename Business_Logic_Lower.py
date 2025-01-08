@@ -3,16 +3,15 @@ from Business_Logic_Upper import *
 
 # функция определения имени последнего каталога
 def name_catalog():
+    list_catalog = []
     file = open("Реестр каталогов.txt", "r")
-    lst_catalog = file.readline()
-    lst_catalog = lst_catalog.split(" ")
+    lst_catalog = file.readlines()
     lengt_catalog = len(lst_catalog)
     if lengt_catalog == 0:
-        return "|"
-    name_catalog = lst_catalog[lengt_catalog - 1]
+        return "___!!"
+    name_catalog = lst_catalog[lengt_catalog - 2]
     file.close()
     return name_catalog
-
 
 # функция проверки существования реестра каталогов
 def exist_reestr():
@@ -30,7 +29,6 @@ def exist_catalog():
         if file_name in content:
             return True
     return False
-
 
 
 # функция ведения реестра созданных каталогов
