@@ -121,7 +121,10 @@ def message_add_book():
     author_book = input("Введите автора книги:   ")
     year_book = input("Введите год издания книги:   ")
     genre_book = input("Введите жанр книги:   ")
+    out_yellow("Книга успешно добавлена в каталог!")
     return name_book, author_book, year_book, genre_book
+
+
 
 
 # Вывод сообщения при отображении книг в каталоге
@@ -193,7 +196,7 @@ def message_sort_books():
 
 # Вывод сообщения при выборе экспорта каталога
 def message_result_export_catalog():
-    print("Файл успешно экспортирован в формат CSV!")
+    out_yellow("Файл успешно экспортирован в формат CSV!")
     print()
 
 # функции окраски цветом
