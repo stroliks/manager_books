@@ -1,6 +1,3 @@
-from fileinput import filename
-from typing import List
-
 import csv
 import os
 
@@ -192,7 +189,6 @@ def sort_catalog_main(file, value_sort):
     sort_catalog = sorted(catalog, key= lambda line: line.split(" - ")[ind])
     file.close()
     return sort_catalog
-
 
 
 # функция экспорта каталога
