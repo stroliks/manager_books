@@ -7,7 +7,7 @@ def name_catalog():
     lst_catalog = file.readlines()
     lengt_catalog = len(lst_catalog)
     if lengt_catalog == 0:
-        return None
+        return "|"
     name_catalog = lst_catalog[lengt_catalog - 1]
     file.close()
     return name_catalog
@@ -23,19 +23,19 @@ def exist_reestr():
 
 # функция проверки существования каталога перед созданием каталога
 def exist_catalog():
-    filename = name_catalog()
+    file_name = name_catalog()
     path = os.getcwd()
     for content in os.listdir(path):
-        if filename in content:
+        if file_name in content:
             return True
     return False
+
 
 
 # функция ведения реестра созданных каталогов
 
 def reestr_catalog(name_catalog):
-    list_catalog = open(f"Реестр каталогов.txt", "a")
-    list_catalog.write("\n")
+    list_catalog = open(f"Реестр каталогов.txt", "w")
     list_catalog.write(name_catalog)
     list_catalog.close()
     return list_catalog
