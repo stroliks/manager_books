@@ -5,13 +5,16 @@ from Business_Logic_Upper import *
 def name_catalog():
     list_catalog = []
     file = open("Реестр каталогов.txt", "r")
-    lst_catalog = file.readlines()
-    lengt_catalog = len(lst_catalog)
+    lst_catalog = file.readline()
+    list_catalog = lst_catalog.split(" ")
+    list_catalog.pop()
+    lengt_catalog = len(list_catalog)
     if lengt_catalog == 0:
         return "___!!"
-    name_catalog = lst_catalog[lengt_catalog - 2]
+    name_catalog = list_catalog[lengt_catalog - 1]
     file.close()
-    return name_catalog
+    return  name_catalog
+
 
 # функция проверки существования реестра каталогов
 def exist_reestr():
@@ -31,6 +34,7 @@ def exist_catalog():
     return False
 
 
+
 # функция ведения реестра созданных каталогов
 
 def reestr_catalog(name_catalog):
@@ -39,3 +43,15 @@ def reestr_catalog(name_catalog):
     list_catalog.write(" ")
     list_catalog.close()
     return list_catalog
+
+
+# функция удаления каталога
+def delete_catalog():
+    path = os.getcwd()
+    file_name = name_catalog()
+    for file in os.listdir(path):
+        if file.startswith(file_name):
+            os.remove(file)
+    return  file.startswith(file_name)
+
+print(delete_catalog())
