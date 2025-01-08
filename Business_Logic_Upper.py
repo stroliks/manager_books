@@ -6,7 +6,6 @@ import os
 
 from Business_Logic_Lower import name_catalog
 
-
 # ФУНКЦИЯ НЕПОСРЕДСТВЕННОГО ФУНКЦИОНИРОВАНИЯ ПРОГРАММЫ ПРИ ПЕРВОМ ВЫБОРЕ ПОЛЬЗОВАТЕЛЯ
 
 def global_function(action):
@@ -14,29 +13,31 @@ def global_function(action):
     if action == "С" or action == "C":
         from GraficUserInterface import message_create_catalog, message_result_create_catalog
         from Business_Logic_Lower import exist_catalog, reestr_catalog, exist_reestr
+        result_exist = True
+        name_catalog = None
         if not exist_reestr():
             file = open("Реестр каталогов.txt", "w")
             file.close()
-        result_exist = exist_catalog()
-        name_catalog = None
-        if not result_exist:
-            name_catalog = message_create_catalog()
-            create_catalog(name_catalog)
-            reestr_catalog(name_catalog)
+        name_catalog = message_create_catalog()
+        create_catalog(name_catalog)
+        reestr_catalog(name_catalog)
+        result_exist = False
         return message_result_create_catalog(result_exist, name_catalog)
 
     elif action == "У":
         from GraficUserInterface import message_confirm_delete_catalog, message_result_delete_catalog, message_create_catalog
-        from Business_Logic_Lower import exist_catalog, reestr_catalog
-
-        if message_confirm_delete_catalog() == "Да":
+        from Business_Logic_Lower import exist_catalog, reestr_catalog, exist_reestr
+        if exist_reestr():
             result_exist = exist_catalog()
             if result_exist:
-                delete_catalog()
-            return message_result_delete_catalog(result_exist)
+                if message_confirm_delete_catalog() == "Да":
+                    delete_catalog()
+                elif message_confirm_delete_catalog() == "Нет":
+                    return
+        result_exist = False
+        return message_result_delete_catalog(result_exist)
 
-        elif message_confirm_delete_catalog() == "Нет":
-            return
+
 
     elif action == "П":
         from GraficUserInterface import message_catalogs_history, out_red
@@ -81,6 +82,7 @@ def work_with_catalog(path_file):
         if action_in_catalog == "Д":
             from GraficUserInterface import message_add_book
             name_book, author_book, year_book, genre_book = message_add_book()
+            path_file = name_catalog()
             add_book(path_file, name_book, author_book, year_book, genre_book)
 
         elif action_in_catalog == "У":
@@ -93,6 +95,7 @@ def work_with_catalog(path_file):
             from GraficUserInterface import view_list_books
             print(f"В текущем каталоге находятся следующие книги:  ")
             print()
+            path_file = name_catalog()
             view_list_books(path_file)
 
         elif action_in_catalog == "П":
