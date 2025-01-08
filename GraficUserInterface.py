@@ -48,7 +48,7 @@ def message_result_create_catalog(value, name_catalog):
 #____________________________________________________________________________________________________________________
 # Вывод сообщения при удалении каталога (подтверждение удаления)
 def message_confirm_delete_catalog():
-    confirm_delete_catalog = out_red("каталог будет полностью удален, останется лишь статистическая информация.\n"
+    confirm_delete_catalog = input("каталог будет полностью удален, останется лишь статистическая информация.\n"
                                    "Вы точно хотите удалить каталог?? (Да или Нет) :    ")
     return confirm_delete_catalog
 
@@ -59,7 +59,7 @@ def message_result_delete_catalog(result_delete):
         out_yellow("Каталог успешно удален!!!")
         print()
     else:
-        print("Текущий рабочий каталог отсутствует. Нечего удалять")
+        out_red("Текущий рабочий каталог отсутствует. Нечего удалять")
         print()
 
 
@@ -68,11 +68,13 @@ def message_result_delete_catalog(result_delete):
 # Вывод сообщения при просмотре истории каталогов
 def message_catalogs_history(file):
     file = open(file, "r")
-    lst_catalog = []
-    lst_catalog = file.readlines()
-    print(f"За время функционирования программы было создано {len(lst_catalog)}  каталогов (включая текущий):  ")
+    list = []
+    lst_catalog = file.readline()
+    list = lst_catalog.split(" ")
+    list.pop()
+    print(f"За время функционирования программы было создано {len(list)}  каталогов (включая текущий):  ")
     print()
-    for i, line in enumerate(lst_catalog):
+    for i, line in enumerate(list):
         out_yellow(f"{i + 1}. Каталог с именем <<{line}>>")
 
 
