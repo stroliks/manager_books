@@ -73,7 +73,7 @@ def message_catalogs_history(file):
     print(f"За время функционирования программы было создано {len(lst_catalog)}  каталогов (включая текущий):  ")
     print()
     for i, line in enumerate(lst_catalog):
-        out_yellow(f"{i + 1}. Каталог с именем {line}")
+        out_yellow(f"{i + 1}. Каталог с именем <<{line}>>")
         print()
 
 
